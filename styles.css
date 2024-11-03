@@ -1,0 +1,364 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jomhuria&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Kaisei+Decol:wght@400;500;700&family=Kaisei+Tokumin:wght@400;500;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Russo+One&display=swap');
+/* Variáveis de Tema */
+:root {
+    --background-color: #2b475e;
+    --text-color: #ffffff;
+    --sidebar-background: #1b2a38;
+    --bar-color: #6c757d;
+    --bar-bg: rgba(255, 255, 255, 0.2);
+    --overlay-bg: rgba(0, 0, 0, 0.596);
+    --form-bg: #2a4d69;
+    --input-bg: #ffffff;
+    --button-bg: #4a8f8e;
+    --button-bg-hover: #397f7f;
+    --success-bg: #4caf50;
+}
+
+[data-theme="light"] {
+    --background-color: #f0f4f8;
+    --text-color: #2b475e;
+    --sidebar-background: #e0e7ef;
+    --bar-color: #d3d3d3;
+    --bar-bg: rgba(255, 255, 255, 0.3);
+    --overlay-bg: rgba(0, 0, 0, 0.7);
+}
+
+
+/* Estilos Gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Playfair Display", serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    background-color: var(--sidebar-background);
+    width: 250px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    width: 100%;
+    text-align: center;
+}
+
+.sidebar nav ul li {
+    margin: 40px 0;
+}
+
+.sidebar nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.sidebar .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.sidebar .social-links svg {
+    width: 40px;
+    height: 40px;
+    fill: var(--text-color);
+}
+
+.sidebar .email {
+    font-size: 12px;
+    color: var(--text-color);
+    text-align: center;
+    margin-top: 40px;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.content h1 {
+    font-size: 56px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.content h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    margin-top: 10vh;
+    max-width: 80%;
+    font-weight: 300;
+}
+
+.profile-pic {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+#theme-toggle {
+    background-color: transparent;
+    border: none;
+}
+
+
+
+.skills-section {
+    width: 80%;
+    padding: 40px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.skills{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10vh;
+}
+
+.skills h1 {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.skills .skill {
+    margin: 15px 0;
+    position: relative;
+    font-size: 1.2em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 80%;
+    transition: transform 0.3s;
+}
+
+.skills .skill:hover {
+    transform: scale(1.05);
+}
+
+.bar-container {
+    position: relative;
+    width: 100%;
+    margin-left: 10px;
+    background-color: var(--bar-bg);
+    height: 20px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.bar {
+    height: 100%;
+    background-color: var(--bar-color);
+    width: 0;
+    transition: width 1s ease;
+}
+
+.percentage {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    color: var(--text-color);
+    font-size: 0.9em;
+}
+
+
+.projects-section {
+    width: 80%;
+    padding: 40px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.projects-section h1 {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.projects {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+}
+
+.project {
+    position: relative;
+    width: 300px;
+    max-width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.project:hover {
+    transform: scale(1.05);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--overlay-bg);
+    color: var(--text-color);
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    transition: opacity 0.3s;
+}
+
+.project:hover .overlay {
+    opacity: 1;
+}
+
+.overlay h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.overlay p {
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    body{
+        flex-direction: column;
+    }
+
+    .skills-section {
+        width: 100%;
+
+    }
+    
+
+    .projects-section{
+        width: 100%;
+    }
+
+    .sidebar {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 10px;
+    }
+
+    .content h1 {
+        margin-top: 10vh;
+        font-size: 36px;
+    }
+
+    .content h2 {
+        font-size: 18px;
+    }
+
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+
+.contact-content {
+    width: 100%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--form-bg);
+}
+
+.contact-content h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+form {
+    width: 100%;
+    max-width: 500px;
+}
+
+form label {
+    font-size: 1em;
+    margin: 10px 0 5px;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--input-bg);
+}
+
+form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--button-bg);
+    color: var(--text-color);
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: var(--button-bg-hover);
+}
+
+.success-message {
+    display: none;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: var(--success-bg);
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 0.9em;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
